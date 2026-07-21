@@ -81,7 +81,7 @@
 
 <body>
 
-  <audio src="c:\Users\Latitude 7390 2 in 1\OneDrive\DATAfolder\HABEDE\ABOUT YOU.mp3" id="linkmp3" preload="auto"></audio>
+  <audio src="ABOUT YOU.mp3" id="linkmp3" preload="auto" loop></audio>
   <div class="background-overlay"></div>
 
   <!-- HALAMAN 1 -->
@@ -136,7 +136,9 @@
     const audio = document.getElementById('linkmp3');
 
     function bukaEnvelope() {
-      audio.play().catch(e => console.log("Audio diblokir browser"));
+      audio.currentTime = 0;
+      audio.play().catch(e => console.log("Audio diblokir browser: ", e));
+      
       $('#flap').css('transform', 'rotateX(180deg)');
       $('#letter').css('transform', 'translateY(-110px)');
       
@@ -144,7 +146,7 @@
         $('#hal1').addClass('sembunyi');
         $('#hal2').removeClass('sembunyi');
         mulaiGame();
-      }, 3500);
+      }, 10000);
     }
 
     function pindahHal(target) {
